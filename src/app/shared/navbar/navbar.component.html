@@ -1,0 +1,27 @@
+<nav class="navbar">
+  <p class="navbar-brand">{{ title }}</p>
+  <div class="navbar-main">
+  <ul class="navbar-nav" *ngIf="isLoggedIn">
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="/tasks/dashboard" routerLinkActive="active"> Dashboard</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="/tasks/create" routerLinkActive="active">Create Task</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <span *ngIf="isLoggedIn; else loginButton">
+        <button class="btn btn-link" (click)="logout()">Logout</button>
+      </span>
+      <ng-template #loginButton>
+        <a class="nav-link">Login/Resgister</a>
+      </ng-template>
+    </li>
+   <li class="nav-item username" *ngIf="isLoggedIn">
+      <span>{{ user.username }}</span>
+    </li>
+  </ul>
+  </div>
+</nav>
+

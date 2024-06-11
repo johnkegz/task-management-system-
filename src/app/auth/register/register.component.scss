@@ -1,6 +1,4 @@
-/* login.component.css */
-
-.login-form-container {
+.registration-form-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -42,9 +40,4 @@
 .btn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
-
-.btn-secondary {
-  background-color: red;
-  margin-left: 20px;
 }

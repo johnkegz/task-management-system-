@@ -1,60 +1,19 @@
 {
   "tasks": [
     {
-      "title": "jhh",
-      "description": "kj",
-      "user": 21,
+      "title": "huhuhuyhyuhuhh",
+      "description": "ninijijijiujiujijijji",
+      "user": 12,
       "status": "Pending",
-      "id": 2
-    },
+      "id": 1
+    }
+  ],
+  "users": [
     {
-      "title": "Tsdssdsd",
-      "description": "kl",
-      "user": 21,
-      "status": "Pending",
-      "id": 3
-    },
-    {
-      "title": "csddsds",
-      "description": "ccxx",
-      "user": 21,
-      "status": "Pending",
-      "id": 4
-    },
-    {
-      "title": "yiuiui",
-      "description": "ujjjiuuu",
-      "user": 21,
-      "status": "Pending",
-      "id": 5
-    },
-    {
-      "title": "adasa",
-      "description": "asasasas",
-      "user": 21,
-      "status": "Pending",
-      "id": 6
-    },
-    {
-      "title": "eqerw",
-      "description": "werwwewe",
-      "user": 21,
-      "status": "Pending",
-      "id": 7
-    },
-    {
-      "title": "kjsksdj",
-      "description": "sdlksldslkd",
-      "user": 21,
-      "status": "Pending",
-      "id": 8
-    },
-    {
-      "title": "sdssd",
-      "description": "sdsdsdsd",
-      "user": 21,
-      "status": "Pending",
-      "id": 9
+      "username": "rtrytuyjku",
+      "email": "denismutyaaba@gmail.com",
+      "password": "123456789",
+      "id": 1
     }
   ]
 }

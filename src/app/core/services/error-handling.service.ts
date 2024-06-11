@@ -20,8 +20,14 @@ export class ErrorHandlingService {
     return errorMessage;
   }
 
-  handleApiError(error: HttpErrorResponse): void {
-    const errorMessage = this.handleError(error);
+  handleApiError(error: HttpErrorResponse | string): void {
+    let errorMessage = ''
+    if(typeof error === "string"){
+      errorMessage = error
+    }
+    else{
+       errorMessage = this.handleError(error);
+    }
     console.error(errorMessage);
     this.snackBar.open(errorMessage, 'Close', {
       duration: 3000,

@@ -54,7 +54,6 @@ export class TaskFormComponent implements OnInit {
       if (this.taskId) {
         this.taskService.updateTask(this.taskId, task).subscribe({
         next: (response: Task) => {
-          console.log('Task updated:', response);
           this.router.navigate(['/tasks/dashboard']);
         },
         error: (error: any) => {
@@ -65,7 +64,6 @@ export class TaskFormComponent implements OnInit {
 
       this.taskService.createTask(task).subscribe({
         next: (newTask: Task) => {
-          console.log(newTask)
           this.taskForm.reset();
           this.router.navigate(['/tasks/dashboard']);
         },
