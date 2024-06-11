@@ -5,7 +5,6 @@ import { TasksComponent } from './tasks.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  // { path: '', component: TasksComponent },
   { path: 'create', component: TaskFormComponent },
   { path: 'edit/:id', component: TaskFormComponent },
   { path: 'dashboard', component: DashboardComponent },

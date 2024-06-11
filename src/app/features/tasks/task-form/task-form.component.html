@@ -2,42 +2,76 @@
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="title">Title</label>
-      <input id="title" formControlName="title" class="form-control">
-      <div *ngIf="taskForm.get('title')!.invalid && taskForm.get('title')!.touched" class="error">
-        Title is required.
+      <input id="title" formControlName="title" class="form-control" />
+      <div *ngIf="taskForm.get('title') as titleControl">
+        <div
+          *ngIf="
+            titleControl.invalid && (titleControl.dirty || titleControl.touched)
+          "
+        >
+          <div *ngIf="titleControl.errors?.['required']">
+            Title is required.
+          </div>
+          <div *ngIf="titleControl.errors?.['max']">
+            Title must have more than 4 characters.
+          </div>
+        </div>
       </div>
     </div>
-    
+
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea id="description" formControlName="description" class="form-control"></textarea>
-      <div *ngIf="taskForm.get('description')!.invalid && taskForm.get('description')!.touched" class="error">
-        Description is required.
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+      ></textarea>
+      <div *ngIf="taskForm.get('description') as descriptionControl">
+        <div
+          *ngIf="
+            descriptionControl.invalid &&
+            (descriptionControl.dirty || descriptionControl.touched)
+          "
+        >
+          <div *ngIf="descriptionControl.errors?.['max']">
+            description must have more than 8 characters.
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="form-group">
       <label for="user">User</label>
-      <input id="user" formControlName="user" type="number" class="form-control">
-      <!-- <div *ngIf="taskForm.get('user')!.invalid && taskForm.get('user')!.touched" class="error">
-       user is required.
-      </div> -->
+      <input
+        id="user"
+        formControlName="user"
+        type="number"
+        class="form-control"
+      />
     </div>
 
     <div class="form-group">
       <label for="status">Status</label>
       <select formControlName="status" class="form-control">
-      <option value="Pending">Pending</option>
-      <option value="In Progress">In Progress</option>
-      <option value="Completed">Completed</option>
-    </select>
-      <div *ngIf="taskForm.get('status')!.invalid && taskForm.get('status')!.touched" class="error">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+      <div
+        *ngIf="
+          taskForm.get('status')!.invalid && taskForm.get('status')!.touched
+        "
+        class="error"
+      >
         Status is required.
       </div>
-      
     </div>
-    
-    <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit</button>
-     <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+    <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">
+      Submit
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">
+      Cancel
+    </button>
   </form>
 </div>

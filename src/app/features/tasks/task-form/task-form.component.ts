@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Task } from '../tasks.model';
 import { TaskService } from '../tasks.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { min } from './task-form.custom-validators';
+import { ErrorHandlingService } from '../../../core/services/error-handling.service';
 
 @Component({
   selector: 'app-task-form',
@@ -18,24 +20,18 @@ export class TaskFormComponent implements OnInit {
     private taskService: TaskService,
     private router: Router,
     private route: ActivatedRoute,
+    private errorHandlingService: ErrorHandlingService
   ) {}
-
-  // ngOnInit(): void {
-  //   this.taskForm = this.fb.group({
-  //     title: ['', Validators.required],
-  //     description: ['', Validators.required]
-  //   });
-  // }
 
   ngOnInit(): void {
     this.initForm();
-    // Check if the component is used for editing
+    
     this.route.params.subscribe(params => {
       const taskId = params['id'];
       if (taskId) {
         this.taskId = taskId;
         this.taskService.getTaskById(taskId).subscribe(task => {
-          this.taskForm.patchValue(task); // Prefill form with task data
+          this.taskForm.patchValue(task);
         });
       }
     });
@@ -44,8 +40,8 @@ export class TaskFormComponent implements OnInit {
 
   initForm(): void {
     this.taskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: ['', Validators.required, min(4)],
+      description: ['', Validators.required, min(8)],
       user: ['', Validators.required],
       status: ['Pending', Validators.required]
     });
@@ -56,10 +52,15 @@ export class TaskFormComponent implements OnInit {
       const task: Task = this.taskForm.value;
 
       if (this.taskId) {
-        this.taskService.updateTask(this.taskId, task).subscribe((response: Task) => {
+        this.taskService.updateTask(this.taskId, task).subscribe({
+        next: (response: Task) => {
           console.log('Task updated:', response);
-          this.router.navigate(['/tasks/dashboard']); // Redirect after successful update
-        });
+          this.router.navigate(['/tasks/dashboard']);
+        },
+        error: (error: any) => {
+          this.errorHandlingService.handleApiError(error);
+        }
+      });
       } else {
 
       this.taskService.createTask(task).subscribe({
@@ -69,7 +70,7 @@ export class TaskFormComponent implements OnInit {
           this.router.navigate(['/tasks/dashboard']);
         },
         error: (error: any) => {
-          console.error('Error creating task', error);
+          this.errorHandlingService.handleApiError(error);
         }
       });
     }}
