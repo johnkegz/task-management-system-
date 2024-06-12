@@ -8,15 +8,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './core/interceptors/interceptors';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './core/auth/auth.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
 
 import { EffectsModule } from '@ngrx/effects';
-import { userReducer } from './store/user/user.reducer';
-import { UserEffects } from './store/user/user.effects';
+import { userReducer } from './core/store/user/user.reducer';
+import { UserEffects } from './core/store/user/user.effects';
 import { StoreModule } from '@ngrx/store';
-import { tasksReducer } from './store/tasks/tasks.reducer';
-import { TasksEffects } from './store/tasks/tasks.effects';
+import { tasksReducer } from './core/store/tasks/tasks.reducer';
+import { TasksEffects } from './core/store/tasks/tasks.effects';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { TasksEffects } from './store/tasks/tasks.effects';
     }),
 
     EffectsModule.forRoot([UserEffects, TasksEffects]),
+    MatButtonModule,
   ],
   bootstrap: [AppComponent],
   providers: [

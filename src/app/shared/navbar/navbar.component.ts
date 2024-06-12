@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
-import { ExistingUser, User, initialUser } from '../../auth/user.model';
+import { AuthService } from '../../core/auth/auth.service';
+import { ExistingUser, User, initialUser } from '../../core/auth/user.model';
 import { ErrorHandlingService } from '../../core/services/error-handling.service';
 import { Store } from '@ngrx/store';
-import { UserState } from '../../store/user/user.state';
-import { selectIsLoggedIn, selectUser } from '../../store/user/user.selectors';
+import { UserState } from '../../core/store/user/user.state';
+import { selectIsLoggedIn, selectUser } from '../../core/store/user/user.selectors';
 import { Observable } from 'rxjs';
-import { logout } from '../../store/user/user.actions';
+import { logout } from '../../core/store/user/user.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -21,6 +21,8 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
   user$: Observable<User | null>;
+
+  isDrawerOpen = false;
 
   constructor(
     private authService: AuthService,
@@ -63,5 +65,9 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.store.dispatch(logout());
     this.isLoggedIn = false;
+  }
+
+  toggleDrawer() {
+    this.isDrawerOpen = !this.isDrawerOpen;
   }
 }

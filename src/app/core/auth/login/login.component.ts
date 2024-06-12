@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { ErrorHandlingService } from '../../core/services/error-handling.service';
+import { ErrorHandlingService } from '../../services/error-handling.service';
 import { UserState } from '../../store/user/user.state';
 import { Store } from '@ngrx/store';
 import { login } from '../../store/user/user.actions';
@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
       const data = { user: {username, password} };
-      // this.authService.login(data);
       this.store.dispatch(login(data));
     }
   }

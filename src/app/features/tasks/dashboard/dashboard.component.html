@@ -1,29 +1,30 @@
-<!-- dashboard.component.html -->
-<div class="dashboard">
+<div class="container mt-4">
   <h2>Task Dashboard</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>User</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let task of tasks$ | async">
-        <td>{{ task.id }}</td>
-        <td>{{ task.title }}</td>
-        <td>{{ task.description }}</td>
-        <td>{{ task.user }}</td>
-        <td>{{ task.status }}</td>
-        <td>
-          <button (click)="editTask(task.id)">Edit</button>
-          <button (click)="deleteTask(task.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>User</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks$ | async">
+          <td>{{ task.id }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.user }}</td>
+          <td>{{ task.status }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="editTask(task.id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteTask(task.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

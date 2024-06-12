@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 
 import { DashboardComponent } from './dashboard.component';
 import { TaskService } from '../tasks.service';
-import { loadTasks } from '../../../store/tasks/tasks.actions';
+import { loadTasks } from '../../../core/store/tasks/tasks.actions';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;

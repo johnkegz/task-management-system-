@@ -1,5 +1,5 @@
 // tasks.state.ts
-import { Task } from '../../features/tasks/tasks.model';
+import { Task } from '../../../features/tasks/tasks.model';
 
 export interface TasksState {
   tasks: Task[];

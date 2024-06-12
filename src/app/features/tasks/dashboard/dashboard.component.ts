@@ -3,10 +3,10 @@ import { TaskService } from '../tasks.service';
 import { Task } from '../tasks.model';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadTasks } from '../../../store/tasks/tasks.actions';
-import { selectTasks } from '../../../store/tasks/tasks.selectors';
+import { loadTasks } from '../../../core/store/tasks/tasks.actions';
+import { selectTasks } from '../../../core/store/tasks/tasks.selectors';
 import { Observable } from 'rxjs';
-import { TasksState } from '../../../store/tasks/tasks.state';
+import { TasksState } from '../../../core/store/tasks/tasks.state';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +14,6 @@ import { TasksState } from '../../../store/tasks/tasks.state';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  // tasks: Task[] = [];
   tasks$: Observable<any>;
 
   constructor(

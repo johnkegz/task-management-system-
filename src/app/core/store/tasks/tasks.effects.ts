@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { TaskService } from '../../features/tasks/tasks.service';
+import { TaskService } from '../../../features/tasks/tasks.service';
 import * as TasksActions from './tasks.actions';
 
 @Injectable()

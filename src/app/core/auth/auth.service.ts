@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ExistingUser, User, initialUser } from './user.model';
-import { ErrorHandlingService } from '../core/services/error-handling.service';
+import { ErrorHandlingService } from '../services/error-handling.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
@@ -22,28 +22,6 @@ export class AuthService {
     private router: Router,
     private errorHandlingService: ErrorHandlingService
   ) {}
-
-  // login(credentials: { username: string; password: string }) {
-  //   return this.http
-  //     .get<ExistingUser[]>(`${this.apiUrl}`)
-  //     .subscribe((response) => {
-  //       const user = response.find(
-  //         (u) =>
-  //           u.username === credentials.username &&
-  //           u.password === credentials.password
-  //       );
-  //       if (user) {
-  //         localStorage.setItem('userId', user.id);
-  //         this.isLoggedInSubject.next(true);
-  //         this.userSubject.next(user);
-  //         this.router.navigate(['/tasks/dashboard']);
-  //       } else {
-  //         this.errorHandlingService.handleApiError(
-  //           'Error: Invalid username or password'
-  //         );
-  //       }
-  //     });
-  // }
 
   getUsers() {
     return this.http.get<ExistingUser[]>(`${this.apiUrl}`);
