@@ -44,12 +44,9 @@
 
     <div class="form-group">
       <label for="user">User</label>
-      <input
-        id="user"
-        formControlName="user"
-        type="number"
-        class="form-control"
-      />
+      <select id="user" formControlName="user" class="form-control">
+        <option *ngFor="let user of users" [value]="user.id">{{ user.username }}</option>
+      </select>
     </div>
 
     <div class="form-group">

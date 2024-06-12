@@ -17,7 +17,7 @@
           <td>{{ task.id }}</td>
           <td>{{ task.title }}</td>
           <td>{{ task.description }}</td>
-          <td>{{ task.user }}</td>
+          <td>{{ getUserName(task.user) }}</td>
           <td>{{ task.status }}</td>
           <td>
             <button class="btn btn-primary btn-sm" (click)="editTask(task.id)">Edit</button>

@@ -5,6 +5,7 @@ import { TaskService } from '../tasks.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { min } from './task-form.custom-validators';
 import { ErrorHandlingService } from '../../../core/services/error-handling.service';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-task-form',
@@ -14,17 +15,20 @@ import { ErrorHandlingService } from '../../../core/services/error-handling.serv
 export class TaskFormComponent implements OnInit {
   taskForm!: FormGroup;
   taskId!: number;
+  users: any[] = [];
 
   constructor(
     private fb: FormBuilder, 
     private taskService: TaskService,
     private router: Router,
     private route: ActivatedRoute,
-    private errorHandlingService: ErrorHandlingService
+    private errorHandlingService: ErrorHandlingService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.loadUsers();
     
     this.route.params.subscribe(params => {
       const taskId = params['id'];
@@ -76,5 +80,11 @@ export class TaskFormComponent implements OnInit {
 
   onCancel(): void {
     this.taskForm.reset();
+  }
+
+  loadUsers(): void {
+    this.authService.getUsers().subscribe((users) => {
+      this.users = users;
+    });
   }
 }
