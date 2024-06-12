@@ -17,7 +17,7 @@
     ```
     ng serve --open
 
-4. Run the JSON server using 
+4. Open another terminal and run the JSON server using 
     ```
     json-server --watch db.json --port 3000
 

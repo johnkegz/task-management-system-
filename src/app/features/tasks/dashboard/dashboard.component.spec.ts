@@ -7,6 +7,8 @@ import { of } from 'rxjs';
 import { DashboardComponent } from './dashboard.component';
 import { TaskService } from '../tasks.service';
 import { loadTasks } from '../../../core/store/tasks/tasks.actions';
+import { AuthService } from '../../../core/auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -18,10 +20,12 @@ describe('DashboardComponent', () => {
   beforeEach(async () => {
     taskService = jasmine.createSpyObj('TaskService', ['deleteTask']);
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [DashboardComponent],
       providers: [
         { provide: TaskService, useValue: taskService },
         provideMockStore({}),
+        AuthService,
       ],
     }).compileComponents();
   });
