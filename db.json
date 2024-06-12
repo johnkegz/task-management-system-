@@ -3,16 +3,9 @@
     {
       "title": "tttttttttttttt edited sdsdsd",
       "description": "ttttttttttttttttttt edited ....",
-      "user": 4,
+      "user": 7,
       "status": "Pending",
       "id": 4
-    },
-    {
-      "title": "dddddddddd",
-      "description": "dfddghcgckcycvclugighiiuhu",
-      "user": 45,
-      "status": "Pending",
-      "id": 6
     },
     {
       "title": "wdwewewe",
@@ -20,13 +13,6 @@
       "user": 12,
       "status": "Pending",
       "id": 7
-    },
-    {
-      "title": "sfsdsd",
-      "description": "sdscscdc",
-      "user": 12,
-      "status": "Pending",
-      "id": 8
     },
     {
       "title": "1234567890",
@@ -41,6 +27,20 @@
       "user": 12,
       "status": "Pending",
       "id": 10
+    },
+    {
+      "title": "One ",
+      "description": "One hosjiojsodjosjdsdooijoisd",
+      "user": 4,
+      "status": "Pending",
+      "id": 11
+    },
+    {
+      "title": "uoihoijs",
+      "description": "uyuygiuyhiuhiuihi",
+      "user": 7,
+      "status": "In Progress",
+      "id": 12
     }
   ],
   "users": [
@@ -55,6 +55,12 @@
       "email": "johnkal24@gmail.com",
       "password": "123456789",
       "id": 2
+    },
+    {
+      "username": "kalyango",
+      "email": "john@gmail.com",
+      "password": "123456",
+      "id": 3
     }
   ]
 }

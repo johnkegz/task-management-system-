@@ -8,13 +8,14 @@
           *ngIf="
             titleControl.invalid && (titleControl.dirty || titleControl.touched)
           "
+          class="error"
         >
-          <div *ngIf="titleControl.errors?.['required']">
+          <small *ngIf="titleControl.errors?.['required']">
             Title is required.
-          </div>
-          <div *ngIf="titleControl.errors?.['max']">
+          </small>
+          <small *ngIf="titleControl.errors?.['max']">
             Title must have more than 4 characters.
-          </div>
+          </small>
         </div>
       </div>
     </div>
@@ -32,10 +33,11 @@
             descriptionControl.invalid &&
             (descriptionControl.dirty || descriptionControl.touched)
           "
+          class="error"
         >
-          <div *ngIf="descriptionControl.errors?.['max']">
+          <small *ngIf="descriptionControl.errors?.['max']">
             description must have more than 8 characters.
-          </div>
+          </small>
         </div>
       </div>
     </div>
@@ -63,7 +65,7 @@
         "
         class="error"
       >
-        Status is required.
+        <small>Status is required.</small>
       </div>
     </div>
 
