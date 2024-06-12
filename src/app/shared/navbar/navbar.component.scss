@@ -1,0 +1,112 @@
+.nav-link.active {
+  color: yellow;
+  text-decoration: none;
+}
+
+.username {
+  border: 1px solid black;
+  color: white;
+  border: 1px solid yellow;
+  border-radius: 50px;
+  padding: 10px;
+}
+
+/* Style for the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.navbar-main {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin-left: 1rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Drawer styles */
+.drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
+  z-index: 1000;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-top: 60px;
+}
+
+.drawer-nav .nav-item {
+  padding: 1rem;
+}
+
+.drawer-nav .nav-link {
+  color: #fff;
+  display: block;
+}
+
+/* Ellipsis button for mobile */
+.navbar-toggler {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar-main {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .drawer {
+    display: block;
+  }
+
+  .navbar-toggler div {
+    height: 2px;
+    width: 30px;
+    background: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}

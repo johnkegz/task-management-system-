@@ -1,0 +1,73 @@
+{
+  "tasks": [
+    {
+      "title": "tttttttttttttt edited sdsdsd",
+      "description": "ttttttttttttttttttt edited ....",
+      "user": "1",
+      "status": "Pending",
+      "id": 4
+    },
+    {
+      "title": "wdwewewe",
+      "description": "wewewewewe",
+      "user": "3",
+      "status": "Pending",
+      "id": 7
+    },
+    {
+      "title": "1234567890",
+      "description": "1234567890",
+      "user": "3",
+      "status": "Pending",
+      "id": 9
+    },
+    {
+      "title": "qwertyuio",
+      "description": "restdyfugihojkijuhgfdxszxfcgvhbnjm,.",
+      "user": "2",
+      "status": "Pending",
+      "id": 10
+    },
+    {
+      "title": "One ",
+      "description": "One hosjiojsodjosjdsdooijoisd",
+      "user": "1",
+      "status": "Pending",
+      "id": 11
+    },
+    {
+      "title": "uoihoijs",
+      "description": "uyuygiuyhiuhiuihi",
+      "user": "2",
+      "status": "In Progress",
+      "id": 12
+    },
+    {
+      "title": "jojiojojijjoi",
+      "description": "jbkhhhiojhiojho",
+      "user": "2",
+      "status": "Pending",
+      "id": 13
+    }
+  ],
+  "users": [
+    {
+      "username": "rtrytuyjku",
+      "email": "denismutyaaba@gmail.com",
+      "password": "123456789",
+      "id": 1
+    },
+    {
+      "username": "admin",
+      "email": "johnkal24@gmail.com",
+      "password": "123456789",
+      "id": 2
+    },
+    {
+      "username": "kalyango",
+      "email": "john@gmail.com",
+      "password": "123456",
+      "id": 3
+    }
+  ]
+}
