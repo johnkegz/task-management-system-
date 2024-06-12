@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ExistingUser, User, initialUser } from './user.model';
 import { ErrorHandlingService } from '../core/services/error-handling.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,37 +23,42 @@ export class AuthService {
     private errorHandlingService: ErrorHandlingService
   ) {}
 
-  login(credentials: { username: string; password: string }) {
-    return this.http
-      .get<ExistingUser[]>(`${this.apiUrl}`)
-      .subscribe((response) => {
-        const user = response.find(
-          (u) =>
-            u.username === credentials.username &&
-            u.password === credentials.password
-        );
-        if (user) {
-          localStorage.setItem('userId', user.id);
-          this.isLoggedInSubject.next(true);
-          this.userSubject.next(user);
-          this.router.navigate(['/tasks/dashboard']);
-        } else {
-          this.errorHandlingService.handleApiError(
-            'Error: Invalid username or password'
-          );
-        }
-      });
+  // login(credentials: { username: string; password: string }) {
+  //   return this.http
+  //     .get<ExistingUser[]>(`${this.apiUrl}`)
+  //     .subscribe((response) => {
+  //       const user = response.find(
+  //         (u) =>
+  //           u.username === credentials.username &&
+  //           u.password === credentials.password
+  //       );
+  //       if (user) {
+  //         localStorage.setItem('userId', user.id);
+  //         this.isLoggedInSubject.next(true);
+  //         this.userSubject.next(user);
+  //         this.router.navigate(['/tasks/dashboard']);
+  //       } else {
+  //         this.errorHandlingService.handleApiError(
+  //           'Error: Invalid username or password'
+  //         );
+  //       }
+  //     });
+  // }
+
+  getUsers() {
+    return this.http.get<ExistingUser[]>(`${this.apiUrl}`);
   }
 
   register(userData: User) {
     return this.http.post<User>(`${this.apiUrl}`, userData);
   }
 
-  logout(): void {
+  logout(): Observable<null> {
     localStorage.removeItem('userId');
     this.isLoggedInSubject.next(false);
     this.userSubject.next(initialUser);
     this.router.navigate(['/auth/login']);
+    return of(null)
   }
 
   isAuthenticated(): boolean {

@@ -1,3 +1,4 @@
+<!-- dashboard.component.html -->
 <div class="dashboard">
   <h2>Task Dashboard</h2>
   <table>
@@ -8,19 +9,19 @@
         <th>Description</th>
         <th>User</th>
         <th>Status</th>
-        <th>Actions</th> <!-- New column for edit and delete buttons -->
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks">
+      <tr *ngFor="let task of tasks$ | async">
         <td>{{ task.id }}</td>
         <td>{{ task.title }}</td>
         <td>{{ task.description }}</td>
         <td>{{ task.user }}</td>
         <td>{{ task.status }}</td>
         <td>
-          <button (click)="editTask(task.id)">Edit</button> <!-- Edit button -->
-          <button (click)="deleteTask(task.id)">Delete</button> <!-- Delete button -->
+          <button (click)="editTask(task.id)">Edit</button>
+          <button (click)="deleteTask(task.id)">Delete</button>
         </td>
       </tr>
     </tbody>

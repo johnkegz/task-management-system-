@@ -11,24 +11,35 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AuthModule } from './auth/auth.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
 
+import { EffectsModule } from '@ngrx/effects';
+import { userReducer } from './store/user/user.reducer';
+import { UserEffects } from './store/user/user.effects';
+import { StoreModule } from '@ngrx/store';
+import { tasksReducer } from './store/tasks/tasks.reducer';
+import { TasksEffects } from './store/tasks/tasks.effects';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AuthModule,
-    NavbarModule
-],
+    NavbarModule,
+    StoreModule.forRoot({
+      user: userReducer,
+      tasks: tasksReducer,
+    }),
+
+    EffectsModule.forRoot([UserEffects, TasksEffects]),
+  ],
   bootstrap: [AppComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
-  exports: [
-    ReactiveFormsModule
-  ]
+  exports: [ReactiveFormsModule],
 })
 export class AppModule {}

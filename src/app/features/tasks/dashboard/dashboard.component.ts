@@ -2,25 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../tasks.service';
 import { Task } from '../tasks.model';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadTasks } from '../../../store/tasks/tasks.actions';
+import { selectTasks } from '../../../store/tasks/tasks.selectors';
+import { Observable } from 'rxjs';
+import { TasksState } from '../../../store/tasks/tasks.state';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  tasks: Task[] = [];
+  // tasks: Task[] = [];
+  tasks$: Observable<any>;
 
-  constructor(private taskService: TaskService, private router: Router) {}
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private store: Store<TasksState>
+  ) {
+    this.tasks$ = this.store.select(selectTasks);
+  }
 
   ngOnInit(): void {
     this.loadTasks();
   }
 
   loadTasks(): void {
-    this.taskService.getTasks().subscribe((data: Task[]) => {
-      this.tasks = data;
-    });
+    this.store.dispatch(loadTasks());
   }
 
   editTask(taskId: number): void {
@@ -32,5 +42,4 @@ export class DashboardComponent implements OnInit {
       this.loadTasks();
     });
   }
-
 }

@@ -1,11 +1,18 @@
 {
   "tasks": [
     {
-      "title": "huhuhuyhyuhuhh",
-      "description": "ninijijijiujiujijijji",
-      "user": 12,
+      "title": "tttttttttttttt",
+      "description": "ttttttttttttttttttt",
+      "user": 4,
       "status": "Pending",
-      "id": 1
+      "id": 4
+    },
+    {
+      "title": "testinf edited",
+      "description": "tmsdmfpjspjfpjapsfks edited",
+      "user": 211010101,
+      "status": "Completed",
+      "id": 5
     }
   ],
   "users": [
@@ -14,6 +21,12 @@
       "email": "denismutyaaba@gmail.com",
       "password": "123456789",
       "id": 1
+    },
+    {
+      "username": "admin",
+      "email": "johnkal24@gmail.com",
+      "password": "123456789",
+      "id": 2
     }
   ]
 }

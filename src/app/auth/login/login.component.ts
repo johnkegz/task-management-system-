@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { ErrorHandlingService } from '../../core/services/error-handling.service';
+import { UserState } from '../../store/user/user.state';
+import { Store } from '@ngrx/store';
+import { login } from '../../store/user/user.actions';
+import { Observable } from 'rxjs';
+import { selectUserError } from '../../store/user/user.selectors';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +16,22 @@ import { ErrorHandlingService } from '../../core/services/error-handling.service
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  error$: Observable<any>;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private store: Store<UserState>
+  ) {
+    this.error$ = this.store.select(selectUserError)
+  }
 
   ngOnInit(): void {
     this.initForm();
+
+    this.error$.subscribe((er) => {
+        console.log("{{ error.message ? error.message : error }}", er)
+    });
   }
 
   initForm(): void {
@@ -29,8 +45,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
-      const data = { username, password };
-      this.authService.login(data);
+      const data = { user: {username, password} };
+      // this.authService.login(data);
+      this.store.dispatch(login(data));
     }
   }
 }
